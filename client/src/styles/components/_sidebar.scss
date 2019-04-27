@@ -1,0 +1,50 @@
+.Sidebar {
+  background-color: $c-primary;
+  color: $c-text-sec;
+  padding: 3rem;
+  padding-right: 2rem;
+  overflow: hidden;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+.Sidebar-container {
+  @include respond(tab-port) {
+    width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.Sidebar-link {
+  &:link, &:visited {
+    color: $c-text-sec;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 1rem;
+
+    @include respond(tab-port) {
+      margin: 2.5rem auto;
+      justify-content: center;
+    }
+  }
+
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: currentColor;
+  }
+
+  span {
+    margin: 1rem;
+  }
+}

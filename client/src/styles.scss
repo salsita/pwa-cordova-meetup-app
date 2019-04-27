@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@charset 'UTF-8';
+
+@import
+  'styles/abstracts/variables',
+  'styles/abstracts/respond';
+
+@import
+  'styles/base/base',
+  'styles/base/typography';
+
+@import
+  'styles/layout/main';
+
+@import
+  'styles/components/sidebar',
+  'styles/components/topbar',
+  'styles/components/office-plan',
+  'styles/components/program';
+
+@import
+  'styles/abstracts/utilities';

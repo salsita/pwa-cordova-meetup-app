@@ -1,0 +1,46 @@
+.Program-info {
+  margin: 3rem 0;
+  list-style-type: none;
+  border-top: solid 1px $c-primary;
+  border-bottom: solid 1px $c-primary;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin: 1.2rem 0;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      fill: darken($c-primary, 10%);
+    }
+
+    span {
+      margin-left: 1.7rem;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.Program-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 2rem 0;
+
+  li {
+    padding: 1.4rem 2.8rem;
+    text-align: center;
+
+    &:not(:last-child) {
+      border-bottom: solid 1px $c-text;
+    }
+
+    small {
+      font-style: italic;
+    }
+  }
+}

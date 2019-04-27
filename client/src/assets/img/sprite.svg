@@ -1,0 +1,24 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-mug" viewBox="0 0 32 32">
+<title>mug</title>
+<path d="M30 10h-6v-3c0-2.761-5.373-5-12-5s-12 2.239-12 5v20c0 2.761 5.373 5 12 5s12-2.239 12-5v-3h6c1.105 0 2-0.895 2-2v-10c0-1.105-0.895-2-2-2zM5.502 8.075c-1.156-0.381-1.857-0.789-2.232-1.075 0.375-0.286 1.075-0.694 2.232-1.075 1.811-0.597 4.118-0.925 6.498-0.925s4.688 0.329 6.498 0.925c1.156 0.381 1.857 0.789 2.232 1.075-0.375 0.286-1.076 0.694-2.232 1.075-1.811 0.597-4.118 0.925-6.498 0.925s-4.688-0.329-6.498-0.925zM28 20h-4v-6h4v6z"></path>
+</symbol>
+<symbol id="icon-list-numbered" viewBox="0 0 32 32">
+<title>list-numbered</title>
+<path d="M12 26h20v4h-20zM12 14h20v4h-20zM12 2h20v4h-20zM6 0v8h-2v-6h-2v-2zM4 16.438v1.563h4v2h-6v-4.563l4-1.875v-1.563h-4v-2h6v4.563zM8 22v10h-6v-2h4v-2h-4v-2h4v-2h-4v-2z"></path>
+</symbol>
+<symbol id="icon-enter" viewBox="0 0 32 32">
+<title>enter</title>
+<path d="M12 16h-10v-4h10v-4l6 6-6 6zM32 0v26l-12 6v-6h-12v-8h2v6h10v-18l8-4h-18v8h-2v-10z"></path>
+</symbol>
+<symbol id="icon-calendar" viewBox="0 0 32 32">
+<title>calendar</title>
+<path d="M10 12h4v4h-4zM16 12h4v4h-4zM22 12h4v4h-4zM4 24h4v4h-4zM10 24h4v4h-4zM16 24h4v4h-4zM10 18h4v4h-4zM16 18h4v4h-4zM22 18h4v4h-4zM4 18h4v4h-4zM26 0v2h-4v-2h-14v2h-4v-2h-4v32h30v-32h-4zM28 30h-26v-22h26v22z"></path>
+</symbol>
+<symbol id="icon-map2" viewBox="0 0 32 32">
+<title>map2</title>
+<path d="M21 6l-10-4-11 4v24l11-4 10 4 11-4v-24l-11 4zM12 4.554l8 3.2v19.692l-8-3.2v-19.692zM2 7.401l8-2.909v19.744l-8 2.909v-19.744zM30 24.599l-8 2.909v-19.744l8-2.909v19.744z"></path>
+</symbol>
+</defs>
+</svg>

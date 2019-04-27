@@ -1,0 +1,17 @@
+.OfficePlan {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.OfficePlan-img {
+  background-image: url('assets/img/office-plan.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  height: 90%;
+  width: 90%;
+  margin: 1rem auto;
+}

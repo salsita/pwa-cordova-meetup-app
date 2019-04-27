@@ -1,0 +1,22 @@
+<nav class="Sidebar" [class.visible]="visible">
+  <div class="Sidebar-container" (click)="onClick($event)">
+    <a routerLink="/home" routerLinkActive="active" class="Sidebar-link">
+      <svg>
+        <use xlink:href="assets/img/sprite.svg#icon-list-numbered"></use>
+      </svg>
+      <span>Program</span>
+    </a>
+    <a routerLink="/refreshments" routerLinkActive="active" class="Sidebar-link">
+    <svg>
+        <use xlink:href="assets/img/sprite.svg#icon-mug"></use>
+      </svg>
+      <span>Refreshments</span>
+    </a>
+    <a routerLink="/office-plan" routerLinkActive="active" class="Sidebar-link">
+      <svg>
+        <use xlink:href="assets/img/sprite.svg#icon-enter"></use>
+      </svg>
+      <span>Emergency exit</span>
+    </a>
+  </div>
+</nav>
