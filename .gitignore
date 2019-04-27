@@ -1,0 +1,16 @@
+dist/
+build/
+built-models/
+node_modules/
+
+// LinguiJS build
+web-client/src/locales/_build/
+web-client/src/locales/*/messages.js
+
+.env*
+.*.swp
+*.zip
+*.tgz
+*.log
+.idea/
+.vscode/

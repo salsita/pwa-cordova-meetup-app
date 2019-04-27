@@ -1,0 +1,11 @@
+{
+  "name": "meetup-app",
+  "version": "1.0.0",
+  "description": "Demo application for Salsita Meet Up",
+  "main": "index.js",
+  "scripts": {
+    "start": "./build-scripts/start.sh"
+  },
+  "author": "Lukas Kopenec",
+  "license": "ISC"
+}

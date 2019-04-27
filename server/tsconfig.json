@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "baseUrl": ".",
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    ".src/**/*.spec.ts"
+  ]
+}
