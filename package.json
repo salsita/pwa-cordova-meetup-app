@@ -4,10 +4,14 @@
   "description": "Demo application for Salsita Meet Up",
   "main": "index.js",
   "scripts": {
-    "build": "./build-scripts/build.sh",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
     "start": "./build-scripts/start.sh",
     "start:prod": "node ./server/dist/server.js",
-    "postinstall": "./build-scripts/install.sh && npm run build"
+    "install:client": "cd client && npm ci",
+    "install:server": "cd server && npm ci",
+    "postinstall": "npm run install:client && npm run install:server && npm run build"
   },
   "author": "Lukas Kopenec",
   "license": "ISC",
