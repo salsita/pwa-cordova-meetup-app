@@ -7,6 +7,9 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "baseUrl": ".",
+    "paths": {
+      "@models": ["../models"]
+    }
   },
   "include": [
     "./src/**/*"

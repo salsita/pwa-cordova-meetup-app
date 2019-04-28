@@ -1,0 +1,44 @@
+<div class="Content-container">
+  <h1>Refreshments</h1>
+  <p>
+    You can order various refreshments here...
+  </p>
+  <div class="Refreshments-step">
+    <h2>1. Choose desired refreshment</h2>
+    <div class="Refreshments-loadingText" *ngIf="loadingTypes | async">Loading<span>.</span><span>.</span><span>.</span></div>
+    <app-error [cause]="typesError | async" *ngIf="typesError | async"></app-error>
+    <ul class="Refreshments-types">
+      <li *ngFor="let rt of refreshmentTypes | async" class="Refreshments-type" [class.selected]="rt.id === (selectedType | async)"
+        (click)="onSelectType(rt.id)">
+        <svg [innerHTML]="rt.icon"></svg>
+        <span>{{rt.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="Refreshments-step" *ngIf="!!(selectedType | async)">
+    <h2>2. Select the desired quantity</h2>
+    <div class="Refreshments-chooseQuantity">
+      <input type="number" [(ngModel)]="desiredQuantity" min="1" max="quantity | async" step="1" [disabled]="!(quantity | async)" />
+      <span>out of</span>
+      <span class="Refreshments-loadingText" *ngIf="loadingQuantity | async">Checking availability<span>.</span><span>.</span><span>.</span></span>
+      <span *ngIf="!(loadingQuantity | async) && !(quantityError | async)">
+        <span>{{quantity | async}}</span>
+        <button class="Refreshments-button" [disabled]="!validQuantity" (click)="onOrder()">Order</button>
+      </span>
+      <app-error [cause]="quantityError | async" *ngIf="quantityError | async"></app-error>
+    </div>
+  </div>
+  <div class="u-overlay" [class.visible]="(puttingOrder | async) || (delivering | async) || (orderError | async)">
+    <div class="u-centerText">
+      <div class="Refreshments-loadingText u-textSec" *ngIf="puttingOrder | async">Sending order<span>.</span><span>.</span><span>.</span></div>
+      <div *ngIf="delivering | async">
+        <div class="Refreshments-loadingText u-textSec">Refreshment on its way<span>.</span><span>.</span><span>.</span></div>
+        <img src="assets/img/waiter_run.gif" alt="Waiter" />
+      </div>
+      <div *ngIf="orderError | async">
+        <app-error [cause]="orderError | async"></app-error><br />
+        <button class="Refreshments-button" (click)="onClear()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

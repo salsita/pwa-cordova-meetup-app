@@ -7,7 +7,6 @@ import { TakePath, ClearResult, selectors as officePlanSelectors } from '../duck
 @Component({
   selector: 'app-office-plan',
   templateUrl: './office-plan.component.html',
-  styleUrls: ['./office-plan.component.scss']
 })
 export class OfficePlanComponent implements OnInit {
   isTryingToEscape: Observable<boolean>;

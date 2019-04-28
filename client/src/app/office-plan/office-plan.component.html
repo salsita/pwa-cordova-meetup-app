@@ -7,7 +7,7 @@
       <button class="OfficePlan-button OfficePlan--button4" (click)="onTakePath(4)">Take path</button>
     </div>
   </div>
-  <div class="OfficePlan-overlay" [class.visible]="(isTryingToEscape | async) || ((hasEscaped | async) !== null)">
+  <div class="u-overlay" [class.visible]="(isTryingToEscape | async) || ((hasEscaped | async) !== null)">
     <div class="OfficePlan-escaping" [class.visible]="isTryingToEscape | async">
       <img src="assets/img/running-white.gif" alt="Escaping..." />
       <div>Escaping<span>.</span><span>.</span><span>.</span></div>

@@ -83,23 +83,6 @@
   }
 }
 
-.OfficePlan-overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  background-color: rgba(#000, .7);
-  display: none;
-  justify-content: center;
-  align-items: center;
-
-  &.visible {
-    display: flex;
-  }
-}
-
 .OfficePlan-escaping {
   text-align: center;
   color: $c-text-sec;
