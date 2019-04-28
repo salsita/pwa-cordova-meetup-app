@@ -6,7 +6,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@models": ["../models"]
     }

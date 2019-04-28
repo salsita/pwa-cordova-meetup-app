@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.ts',
   externals: [nodeExternals()],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
     filename: 'server.js'
   },
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',

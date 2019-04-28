@@ -3,8 +3,8 @@ import * as Router from 'koa-router';
 
 import { ErrorCause, Order } from '@models';
 
-import { stocks, types, validType, setInitialStocks } from 'src/data/refreshments';
-import { NotFoundError, BadRequestError } from 'src/helpers/errors';
+import { stocks, types, validType, setInitialStocks } from '../data/refreshments';
+import { NotFoundError, BadRequestError } from '../helpers/errors';
 
 const router = new Router();
 
