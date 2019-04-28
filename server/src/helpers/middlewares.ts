@@ -1,8 +1,10 @@
-import { INTERNAL_SERVER_ERROR } from 'http-status-codes';
+import { INTERNAL_SERVER_ERROR, NOT_FOUND } from 'http-status-codes';
 import * as Koa from 'koa';
+import * as send from 'koa-send';
 
 import { ErrorWithCause, extractError } from './errors';
 import logger from './logger';
+import { APP_PATH } from './paths';
 
 export function errorHandler(/* options */) {
   return async (ctx: Koa.Context, next: () => Promise<any>) => {
@@ -12,10 +14,15 @@ export function errorHandler(/* options */) {
       await next();
 
       if (ctx.status >= 400) {
-        logger.info({
-          message: `Request flow successful, but status is erroneous ${ctx.status}`,
-          body: ctx.body,
-        });
+        if (ctx.status === NOT_FOUND && ctx.request.accepts('html')) {
+          logger.info('Fallback to index.html');
+          await send(ctx, 'index.html', { root: APP_PATH });
+        } else {
+          logger.info({
+            message: `Request flow successful, but status is erroneous ${ctx.status}`,
+            body: ctx.body,
+          });
+        }
       } else {
         logger.info(`Request processed successfully, status ${ctx.status}`);
       }
