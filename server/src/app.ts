@@ -7,11 +7,14 @@ import * as Static from 'koa-static';
 import apiRouter from './api';
 import { errorHandler } from './helpers/middlewares';
 import { APP_PATH } from './helpers/paths';
+import logger from './helpers/logger';
 
 const app = new Koa();
 const router = new Router();
 
 router.use('/api', apiRouter.routes(), apiRouter.allowedMethods());
+
+logger.info(`Application files are at ${APP_PATH}`);
 
 app.use(koaMiddleware());
 app.use(Static(APP_PATH));

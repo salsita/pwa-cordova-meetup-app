@@ -9,9 +9,13 @@
     "build:server": "cd server && npm run build",
     "start": "./build-scripts/start.sh",
     "start:prod": "node ./server/dist/server.js",
-    "install:client": "cd client && npm install --no-save",
-    "install:server": "cd server && npm install --no-save",
-    "postinstall": "npm run install:client && npm run install:server && npm run build"
+    "install:client": "cd client && npm install --no-save --no-production",
+    "install:server": "cd server && npm install --no-save --no-production",
+    "postinstall": "npm run install:client && npm run install:server && npm run build",
+    "cleanup": "npm prune --production && find . -maxdepth 1 -not -name 'node_modules' -not -name 'dist' -exec rm -rv {} +",
+    "cleanup:client": "cd client && npm run cleanup",
+    "cleanup:server": "cd server && npm run cleanup",
+    "heroku-postbuild": "npm run cleanup:client && npm run cleanup:server"
   },
   "author": "Lukas Kopenec",
   "license": "ISC",
