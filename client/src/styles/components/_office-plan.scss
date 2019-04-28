@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
 }
@@ -14,4 +15,211 @@
   height: 90%;
   width: 90%;
   margin: 1rem auto;
+  position: relative;
+}
+
+.OfficePlan-buttonContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.OfficePlan-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: relative;
+  top: -2rem;
+
+  @include respond(phone) {
+    top: 1.5rem;
+  }
+
+  @include respond(phone-hd) {
+    top: 1rem;
+  }
+
+  @include respond(phone-ns) {
+    top: 7.5rem;
+  }
+}
+
+.OfficePlan--button1 {
+  left: -70%;
+
+  @include respond(phone-hd) {
+    left: -45%;
+  }
+}
+
+.OfficePlan--button2 {
+  left: -35%;
+
+  @include respond(phone-hd) {
+    left: -31%;
+  }
+}
+
+.OfficePlan--button3 {
+  left: 2%;
+
+  @include respond(phone-hd) {
+    left: -17%;
+  }
+}
+
+.OfficePlan--button4 {
+  left: 45%;
+
+  @include respond(phone-hd) {
+    left: 93%;
+    top: -.8rem;
+  }
+
+  @include respond(phone-ns) {
+    top: 5.7rem;
+  }
+}
+
+.OfficePlan-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(#000, .7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.visible {
+    display: flex;
+  }
+}
+
+.OfficePlan-escaping {
+  text-align: center;
+  color: $c-text-sec;
+  font-size: 6rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+
+  div {
+    margin: 1rem 0;
+
+    span {
+      animation: blink .8s ease infinite;
+
+      &:nth-child(2) {
+        animation-delay: .2s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: .4s;
+      }
+    }
+  }
+}
+
+.OfficePlan-escapeResult {
+  display: none;
+  width: 40rem;
+  height: 50rem;
+  transform-style: preserve-3d;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+
+  &.visible {
+    display: block;
+    animation: rotate-scale-down-diag-1 0.7s ease-in-out both;
+  }
+}
+
+.OfficePlan-resultCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: $c-primary;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 2.8rem;
+  padding: 2rem;
+  color: $c-text-sec;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  img {
+    width: 25rem;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  button {
+    border: solid 1px rgba($c-text-sec, .3);
+    background: transparent;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    color: inherit;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+      box-shadow: 2px 2px 4px rgba($c-text-sec, .6);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      outline: none;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.OfficePlan--resultCardBack {
+  transform: rotate3d(1,1,0,180deg);
+  background-color: $c-primary;
+
+  img {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.OfficePlan--escapeResultFailed {
+  .OfficePlan-resultCardTitle {
+    text-shadow:
+      4px 4px 1px #300000,
+      4px 6px 1px #400000,
+      4px 8px 1px #500000,
+      4px 10px 1px #600000,
+      4px 12px 1px #700000,
+      4px 14px 1px #800000,
+      4px 16px 1px #900000,
+      4px 18px 1px #A00000,
+      4px 20px 1px #B00000,
+      4px 22px 1px #C00000,
+      4px 24px 1px #D00000,
+      4px 26px 1px #E00000,
+      4px 28px 1px #F00000,
+      4px 30px 1px #FA0000,
+      4px 32px 1px #FB0000,
+      4px 34px 1px #FC0000,
+      4px 36px 1px #FD0000,
+      4px 38px 1px #FE0000,
+      4px 40px 2px #FF0000;
+  }
 }

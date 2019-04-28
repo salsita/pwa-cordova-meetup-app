@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
-import { AppRoutingModule } from 'src/app-routing.module';
 import { environment } from 'src/environments/environment';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppState, reducers, effects } from './ducks';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +24,10 @@ import { OfficePlanComponent } from './office-plan/office-plan.component';
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot(reducers, {
+      initialState: { ...new AppState() },
+    }),
+    EffectsModule.forRoot(effects),
     [...environment.providers],
     AppRoutingModule,
   ],

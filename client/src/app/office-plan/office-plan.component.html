@@ -1,3 +1,36 @@
 <div class="OfficePlan">
-  <div class="OfficePlan-img"></div>
+  <div class="OfficePlan-img">
+    <div class="OfficePlan-buttonContainer">
+      <button class="OfficePlan-button OfficePlan--button1" (click)="onTakePath(1)">Take path</button>
+      <button class="OfficePlan-button OfficePlan--button2" (click)="onTakePath(2)">Take path</button>
+      <button class="OfficePlan-button OfficePlan--button3" (click)="onTakePath(3)">Take path</button>
+      <button class="OfficePlan-button OfficePlan--button4" (click)="onTakePath(4)">Take path</button>
+    </div>
+  </div>
+  <div class="OfficePlan-overlay" [class.visible]="(isTryingToEscape | async) || ((hasEscaped | async) !== null)">
+    <div class="OfficePlan-escaping" [class.visible]="isTryingToEscape | async">
+      <img src="assets/img/running-white.gif" alt="Escaping..." />
+      <div>Escaping<span>.</span><span>.</span><span>.</span></div>
+    </div>
+    <div class="OfficePlan-escapeResult OfficePlan--escapeResultFailed" [class.visible]="(hasEscaped | async) === false">
+      <div class="OfficePlan-resultCard OfficePlan--resultCardFront">
+        <div class="OfficePlan-resultCardTitle">You shall not pass!</div>
+        <img src="assets/img/Matt.jpg" alt="Gandalf the CEO" />
+        <button (click)="onCloseResult()">Sit back</button>
+      </div>
+      <div class="OfficePlan-resultCard OfficePlan--resultCardBack">
+        <img src="assets/img/salsita-logo.jpg" />
+      </div>
+    </div>
+    <div class="OfficePlan-escapeResult OfficePlan--escapeResultsuccess" [class.visible]="(hasEscaped | async) === true">
+      <div class="OfficePlan-resultCard OfficePlan--resultCardFront">
+        <div>Wait! Don't leave us!</div>
+        <img src="assets/img/do-not-go.jpg" alt="Don't leave us!" />
+        <button (click)="onCloseResult()">Ok, go back</button>
+      </div>
+      <div class="OfficePlan-resultCard OfficePlan--resultCardBack">
+        <img src="assets/img/salsita-logo.jpg" />
+      </div>
+    </div>
+  </div>
 </div>

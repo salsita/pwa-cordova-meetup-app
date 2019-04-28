@@ -7,6 +7,8 @@
 1800px + :      Big desktop
 
 $breakpoint arguement choices:
+- phone-hd
+- phone-ns
 - phone
 - tab-port
 - tab-land
@@ -17,6 +19,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 */
 @mixin respond($breakpoint) {
+    @if $breakpoint == phone-ns {
+        @media only screen and (max-width: 37.5em) and (max-aspect-ratio: 1/2) { @content };    //600px && ~ non standard
+    }
+    @if $breakpoint == phone-hd {
+        @media only screen and (max-width: 37.5em) and (max-aspect-ratio: 9/16) { @content };    //600px && ~ full HD
+    }
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em) { @content };    //600px
     }
