@@ -9,14 +9,14 @@
     "build:server": "cd server && npm run build",
     "start": "./build-scripts/start.sh",
     "start:prod": "node ./server/dist/server.js",
-    "install:client": "cd client && npm ci",
-    "install:server": "cd server && npm ci",
+    "install:client": "cd client && npm install --no-production",
+    "install:server": "cd server && npm install --no-production",
     "postinstall": "npm run install:client && npm run install:server && npm run build"
   },
   "author": "Lukas Kopenec",
   "license": "ISC",
   "engines": {
-    "node": ">= 8.12.0",
-    "npm": ">= 6.4.1"
+    "node": ">= 10.15.3",
+    "npm": ">= 6.9.0"
   }
 }
