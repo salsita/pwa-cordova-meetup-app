@@ -1,4 +1,5 @@
 import { INTERNAL_SERVER_ERROR, NOT_FOUND } from 'http-status-codes';
+import * as path from 'path';
 import * as Koa from 'koa';
 import * as send from 'koa-send';
 
@@ -15,8 +16,9 @@ export function errorHandler(/* options */) {
 
       if (ctx.status >= 400) {
         if (ctx.status === NOT_FOUND && ctx.request.accepts('html')) {
-          logger.info('Fallback to index.html');
-          await send(ctx, 'index.html', { root: APP_PATH });
+          logger.info(`Fallback to index.html, path is ${ctx.path}`);
+          const rootPath = path.join(APP_PATH, ctx.path.startsWith('/pwa') ? 'pwa' : 'normal');
+          await send(ctx, 'index.html', { root: rootPath });
         } else {
           logger.info({
             message: `Request flow successful, but status is erroneous ${ctx.status}`,

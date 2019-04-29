@@ -40,6 +40,36 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "./normal",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "pwa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pwa.ts"
+                }
+              ],
+              "assets": [
+                { "glob": "**/*", "input": "src/assets/", "output": "/assets" },
+                { "glob": "**/*", "input": "src/pwa/favicons/", "output": "/" }
+              ],
+              "baseHref": "./pwa",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

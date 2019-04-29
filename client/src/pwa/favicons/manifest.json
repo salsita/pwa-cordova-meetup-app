@@ -1,0 +1,14 @@
+{
+  "name": "Meet Up",
+  "short_name": "Meet Up",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#bc221d",
+  "background_color": "#bc221d",
+  "display": "standalone"
+}

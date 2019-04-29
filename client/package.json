@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot",
+    "build": "npm run build:normal && npm run build:pwa",
+    "build:normal": "ng build --prod --outputPath=./dist/normal",
+    "build:pwa": "ng build --configuration=pwa --index=src/pwa/index.html --outputPath=./dist/pwa",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
