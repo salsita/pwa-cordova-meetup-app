@@ -13,10 +13,6 @@
   display: flex;
   position: relative;
 
-  @include respond(tab-port) {
-    display: block;
-  }
-
   .Sidebar {
     width: 30rem;
     flex: 0 0 30rem;

@@ -19,12 +19,16 @@
     <h2>2. Select the desired quantity</h2>
     <div class="Refreshments-chooseQuantity">
       <input type="number" [(ngModel)]="desiredQuantity" min="1" max="quantity | async" step="1" [disabled]="!(quantity | async)" />
-      <span>out of</span>
-      <span class="Refreshments-loadingText" *ngIf="loadingQuantity | async">Checking availability<span>.</span><span>.</span><span>.</span></span>
-      <span *ngIf="!(loadingQuantity | async) && !(quantityError | async)">
-        <span>{{quantity | async}}</span>
-        <button class="Refreshments-button" [disabled]="!validQuantity" (click)="onOrder()">Order</button>
-      </span>
+      <div>
+        <span>out of</span>
+        <span class="Refreshments-loadingText" *ngIf="loadingQuantity | async">
+          Checking availability<span>.</span><span>.</span><span>.</span>
+        </span>
+        <span *ngIf="!(loadingQuantity | async) && !(quantityError | async)">
+          <span>{{quantity | async}}</span>
+        </span>
+      </div>
+      <button class="Refreshments-button" [disabled]="!validQuantity" (click)="onOrder()" *ngIf="!(loadingQuantity | async) && !(quantityError | async)">Order</button>
       <app-error [cause]="quantityError | async" *ngIf="quantityError | async"></app-error>
     </div>
   </div>

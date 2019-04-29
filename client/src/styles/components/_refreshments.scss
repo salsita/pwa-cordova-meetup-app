@@ -2,6 +2,10 @@
   font-size: 2.5rem;
   color: $c-primary;
 
+  @include respond(tab-port) {
+    font-size: 2rem;
+  }
+
   span {
     animation: blink .8s ease infinite;
 
@@ -56,7 +60,13 @@
 }
 
 .Refreshments-chooseQuantity {
+  display: flex;
+  align-items: flex-end;
   font-size: 2.3rem;
+
+  @include respond(tab-port) {
+    font-size: 1.9rem;
+  }
 
   input {
     border: none;
@@ -64,8 +74,13 @@
     font-size: inherit;
     width: 8rem;
     padding: .5rem 1.5rem;
+    margin-right: 1rem;
     text-align: center;
     color: $c-text;
+
+    @include respond(tab-port) {
+      width: 5rem;
+    }
 
     &:focus {
       outline: none;
