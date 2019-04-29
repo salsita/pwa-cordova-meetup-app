@@ -37,7 +37,7 @@
       <div class="Refreshments-loadingText u-textSec" *ngIf="puttingOrder | async">Sending order<span>.</span><span>.</span><span>.</span></div>
       <div *ngIf="delivering | async">
         <div class="Refreshments-loadingText u-textSec">Refreshment on its way<span>.</span><span>.</span><span>.</span></div>
-        <img src="assets/img/waiter_run.gif" alt="Waiter" />
+        <img class="Refreshments-waiter" src="assets/img/waiter_run.gif" alt="Waiter" />
       </div>
       <div *ngIf="orderError | async">
         <app-error [cause]="orderError | async"></app-error><br />

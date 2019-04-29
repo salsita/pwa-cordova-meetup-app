@@ -34,7 +34,7 @@
   top: -2rem;
 
   @include respond(phone) {
-    top: 1.5rem;
+    top: -1rem;
   }
 
   @include respond(phone-hd) {
@@ -49,13 +49,17 @@
 .OfficePlan--button1 {
   left: -70%;
 
-  @include respond(phone-hd) {
+  @include respond(phone) {
     left: -45%;
   }
 }
 
 .OfficePlan--button2 {
   left: -35%;
+
+  @include respond(phone) {
+    left: -27%;
+  }
 
   @include respond(phone-hd) {
     left: -31%;
@@ -65,6 +69,10 @@
 .OfficePlan--button3 {
   left: 2%;
 
+  @include respond(phone) {
+    left: -10%;
+  }
+
   @include respond(phone-hd) {
     left: -17%;
   }
@@ -72,6 +80,11 @@
 
 .OfficePlan--button4 {
   left: 45%;
+
+  @include respond(phone) {
+    left: 95%;
+    top: -2.8rem;
+  }
 
   @include respond(phone-hd) {
     left: 93%;
@@ -119,6 +132,10 @@
   transform-style: preserve-3d;
   transform: translate3d(0,0,0);
   backface-visibility: hidden;
+
+  @include respond(phone) {
+    width: 100%;
+  }
 
   &.visible {
     display: block;
