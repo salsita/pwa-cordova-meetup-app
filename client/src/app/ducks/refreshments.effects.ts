@@ -26,7 +26,7 @@ import { StoreService } from '../store.service';
 const baseUrl = '/api/refreshments';
 
 @Injectable()
-export default class Effects {
+export class Effects {
   @Effect()
   readonly getTypes = this.action$.pipe(
     ofType(RefreshmentsActions.GetTypes),

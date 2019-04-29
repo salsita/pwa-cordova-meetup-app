@@ -5,7 +5,7 @@ import { delay, map } from 'rxjs/operators';
 import { Actions as OfficePlanActions, ActionType, TakePath, PathEnded } from './officePlan';
 
 @Injectable()
-export default class Effects {
+export class Effects {
   @Effect()
   readonly tryPath = this.action$.pipe(
     ofType(OfficePlanActions.TakePath),

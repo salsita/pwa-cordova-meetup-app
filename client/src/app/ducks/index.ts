@@ -3,8 +3,8 @@ import { ActionReducerMap } from '@ngrx/store';
 import * as OfficePlan from './officePlan';
 import * as Refreshments from './refreshments';
 
-import OfficePlanEffects from './officePlan.effects';
-import RefreshmentsEffects from './refreshments.effects';
+import { Effects as OfficePlanEffects } from './officePlan.effects';
+import { Effects as RefreshmentsEffects } from './refreshments.effects';
 
 export class AppState {
   [OfficePlan.statePath]: OfficePlan.State;
@@ -12,8 +12,8 @@ export class AppState {
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  [OfficePlan.statePath]: OfficePlan.reducer,
-  [Refreshments.statePath]: Refreshments.reducer,
+  officePlan: OfficePlan.reducer,
+  refreshments: Refreshments.reducer,
 };
 
 export const effects = [
