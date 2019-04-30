@@ -67,7 +67,8 @@
               ],
               "assets": [
                 { "glob": "**/*", "input": "src/assets/", "output": "/assets" },
-                { "glob": "**/*", "input": "src/pwa/favicons/", "output": "/" }
+                { "glob": "**/*", "input": "src/pwa/favicons/", "output": "/" },
+                { "glob": "serviceWorker.js", "input": "src/pwa", "output": "/" }
               ],
               "baseHref": "./pwa",
               "optimization": true,
