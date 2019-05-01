@@ -1,4 +1,3 @@
-import { NO_CONTENT } from 'http-status-codes';
 import * as Router from 'koa-router';
 
 import { ErrorCause, Order } from '@models';
@@ -34,7 +33,7 @@ router.post('/order', async ctx => {
   }
 
   stocks.set(refreshmentType, available - quantity);
-  ctx.status = NO_CONTENT;
+  ctx.body = { refreshmentType, quantity };
 });
 
 router.get('/replenish', async ctx => {

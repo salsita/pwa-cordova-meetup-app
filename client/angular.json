@@ -72,7 +72,7 @@
               ],
               "baseHref": "./pwa",
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
