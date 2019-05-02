@@ -9,12 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="Description"
     content="Author: Lukas Kopenec (Salsita software), Purpose: Demo application for Salsita Meet Up about Future of Mobile Development">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="msapplication-TileColor" content="#bc221d">
-  <meta name="theme-color" content="#bc221d">
   <style type="text/stylesheet"">
     @keyframes blink {
       0% {
@@ -42,27 +36,12 @@
       animation-delay: .4s;
     }
   </style>
-  <script type="text/javascript">
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', async () => {
-        try {
-          const registration = await navigator.serviceWorker.register('serviceWorker.js');
-          window.swRegistration = registration;
-          window.checkNotifications();
-          console.log('Service worker registered with score', registration.scope);
-        } catch (err) {
-          console.error('ServiceWorker registration failed: ', err);
-        }
-      });
-    }
-  </script>
 </head>
 
 <body>
   <app-root>
     <div class="animated">Loading<span>.</span><span>.</span><span>.</span></div>
   </app-root>
-  <noscript>Sorry, you need to have JavaScript enabled in order to use this app.</noscript>
 </body>
 
 </html>
