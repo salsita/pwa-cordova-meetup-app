@@ -28,11 +28,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.json'],
     alias: {
       '@models': path.resolve(__dirname, '../models'),
-      config: path.resolve(__dirname, 'src/config'),
-      helpers: path.resolve(__dirname, 'src/helpers'),
-      locale: path.resolve(__dirname, 'src/locale'),
-      models: path.resolve(__dirname, 'src/models'),
-      services: path.resolve(__dirname, 'src/services'),
+      'src': path.resolve(__dirname, './src'),
     },
   },
   target: 'node'
