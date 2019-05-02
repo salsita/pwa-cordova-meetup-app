@@ -90,6 +90,7 @@ export class Effects {
 
   readonly checkNotifications = async () => {
     const subscription = await window.swRegistration.pushManager.getSubscription();
+    await saveSubscription(subscription);
     this.storeService.dispatch(new NotificationsToggled(subscription !== null));
   }
 
