@@ -131,7 +131,7 @@ export function reducer(state: State = new State(), action: ActionType): State {
     case Actions.NotificationsToggled:
       return { ...state, togglingNotifications: false, allowNotifications: action.value };
     case Actions.Clear:
-      return { ...new State(), types: state.types };
+      return { ...new State(), types: state.types, togglingNotifications: state.togglingNotifications, allowNotifications: state.allowNotifications };
     default:
       return state;
   }
