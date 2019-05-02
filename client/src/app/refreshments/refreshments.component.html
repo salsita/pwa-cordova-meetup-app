@@ -3,6 +3,13 @@
   <p>
     You can order various refreshments here...
   </p>
+  <div *ngIf="showNotificationsControl | async">
+    <input type="checkbox" [checked]="notificationsAllowed | async" disabled />
+    <label class="Checkbox-label" [class.disabled]="togglingNotifications | async" (click)="onToggleNotifications()">
+      <span class="Checkbox-mark"></span>
+      <span class="Checkbox-text">Notify me when the order is ready</span>
+    </label>
+  </div>
   <div class="Refreshments-step">
     <h2>1. Choose desired refreshment</h2>
     <div class="Refreshments-loadingText" *ngIf="loadingTypes | async">Loading<span>.</span><span>.</span><span>.</span></div>

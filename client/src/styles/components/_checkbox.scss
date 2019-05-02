@@ -1,0 +1,62 @@
+input[type=checkbox] {
+  display: none;
+
+  &:checked + label {
+    
+    .Checkbox-mark {
+      &::before, &::after {
+        width: 150%;
+      }
+    }
+  }
+}
+
+.Checkbox-label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+
+  .disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+@mixin checkbox-mark {
+  position: absolute;
+  left: 0;
+  content: '';
+  height: 100%;
+  width: 0;
+  transition: width .2s;
+}
+
+.Checkbox-mark {
+  position: relative;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid $c-primary;
+  overflow: hidden;
+  flex: 0 0 2rem;
+
+  &::before {
+    @include checkbox-mark;
+    top: -1px;
+    border-top: 2px solid $c-primary;
+    transform: rotate(45deg);
+    transform-origin: top left;
+  }
+
+  &::after {
+    @include checkbox-mark;
+    border-bottom: 2px solid $c-primary;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+    transition-delay: .2s;
+  }
+}
+
+.Checkbox-text {
+  margin-left: 1.5rem;
+}

@@ -19,6 +19,7 @@
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "koa-static": "^5.0.0",
+    "web-push": "^3.3.3",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@types/koa-send": "^4.1.2",
     "@types/koa-static": "^4.0.1",
     "@types/node": "^11.13.8",
+    "@types/web-push": "^3.3.0",
     "awesome-typescript-loader": "^5.2.1",
     "cross-env": "^5.2.0",
     "nodemon": "^1.18.11",

@@ -1,5 +1,6 @@
 const version = 1;
 const cacheName = `salsita-meetup-cache-v${version}`;
+const applicationServerPublicKey = 'BOkeCBZyEnydoii6PEwGyt1v-i-P7xyiLDfqoYqCEwQgSb9sT3OJ1WwgkIDO1eBr24y9v-viSNOJnBQIEmNPuvk';
 
 self.addEventListener('install', async function(event) {
   console.log('[Service Worker]: Installing...');
@@ -13,11 +14,13 @@ self.addEventListener('install', async function(event) {
         'polyfills.js',
         'runtime.js',
         'styles.css',
+        'assets/img/bell.svg',
         'assets/img/do-not-go.jpg',
         'assets/img/assets/img/Matt.jpg',
         'assets/img/office-plan.svg',
         'assets/img/running-white.gif',
         'assets/img/salsita-logo.jpg',
+        'assets/img/spoon-knife.svg',
         'assets/img/sprite.svg',
         'assets/img/waiter_run.gif',
       ]);
@@ -50,4 +53,16 @@ self.addEventListener('fetch', async function(event) {
     }
     return response;
   })());
+});
+
+self.addEventListener('push', async function(event) {
+  console.log('[Service Worker]: Push received with the following data', event.data.text());
+
+  const title = 'Meet Up App';
+  const options = {
+    body: event.data.text(),
+    icon: 'assets/img/bell.svg',
+    badge: 'assets/img/spoon-knife.svg',
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
 });

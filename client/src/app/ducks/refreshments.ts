@@ -1,6 +1,7 @@
 import { Action, createSelector, createFeatureSelector } from '@ngrx/store';
 
 import { ErrorCause, RefreshmentType } from '@models';
+import { environment } from 'src/environments/environment';
 
 export enum Actions {
   GetTypes = '@@refreshments/GET_TYPES',
@@ -12,6 +13,8 @@ export enum Actions {
   PutOrder = '@@refreshments/PUT_ORDER',
   PutOrderSuccess = '@@refreshments/PUT_ORDER_SUCCESS',
   PutOrderFail = '@@refreshments/PUT_ORDER_FAIL',
+  ToggleNotifications = '@@refreshments/TOGGLE_NOTIFICATIONS',
+  NotificationsToggled = '@@refreshments/NOTIFICATIONS_TOGGLED',
   Clear = '@@refreshments/CLEAR',
 }
 
@@ -25,6 +28,8 @@ export type ActionType =
   | PutOrder
   | PutOrderSuccess
   | PutOrderFail
+  | ToggleNotifications
+  | NotificationsToggled
   | Clear;
 
 export class GetTypes implements Action {
@@ -70,6 +75,15 @@ export class PutOrderFail implements Action {
   constructor(readonly cause: ErrorCause) {}
 }
 
+export class ToggleNotifications implements Action {
+  readonly type = Actions.ToggleNotifications;
+}
+
+export class NotificationsToggled implements Action {
+  readonly type = Actions.NotificationsToggled;
+  constructor(readonly value: boolean) {}
+}
+
 export class Clear implements Action {
   readonly type = Actions.Clear;
 }
@@ -87,6 +101,9 @@ export class State {
   puttingOrder = false;
   delivering = false;
   orderError: ErrorCause = null;
+  showNotificationsControl = environment.pwa;
+  allowNotifications = false;
+  togglingNotifications = false;
 }
 
 export function reducer(state: State = new State(), action: ActionType): State {
@@ -109,6 +126,10 @@ export function reducer(state: State = new State(), action: ActionType): State {
       return { ...state, puttingOrder: false, delivering: true };
     case Actions.PutOrderFail:
       return { ...state, puttingOrder: false, orderError: action.cause };
+    case Actions.ToggleNotifications:
+      return { ...state, togglingNotifications: true };
+    case Actions.NotificationsToggled:
+      return { ...state, togglingNotifications: false, allowNotifications: action.value };
     case Actions.Clear:
       return { ...new State(), types: state.types };
     default:
@@ -168,6 +189,21 @@ const selectOrderError = createSelector(
   state => state.orderError,
 );
 
+const isNotificationsControlVisible = createSelector(
+  selectState,
+  state => state.showNotificationsControl,
+);
+
+const areNotificationsAllowed = createSelector(
+  selectState,
+  state => state.allowNotifications,
+);
+
+const isTogglingNotifications = createSelector(
+  selectState,
+  state => state.togglingNotifications,
+);
+
 export const selectors = {
   selectState,
   isLoadingTypes,
@@ -180,4 +216,7 @@ export const selectors = {
   isPuttingOrder,
   isDelivering,
   selectOrderError,
+  isNotificationsControlVisible,
+  areNotificationsAllowed,
+  isTogglingNotifications,
 };

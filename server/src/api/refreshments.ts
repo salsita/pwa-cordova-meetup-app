@@ -1,9 +1,12 @@
 import * as Router from 'koa-router';
+import * as webPush from 'web-push';
 
 import { ErrorCause, Order } from '@models';
 
-import { stocks, types, validType, setInitialStocks } from '../data/refreshments';
-import { NotFoundError, BadRequestError } from '../helpers/errors';
+import { subscriptions } from 'src/data/notifications';
+import { stocks, types, validType, setInitialStocks } from 'src/data/refreshments';
+import { NotFoundError, BadRequestError } from 'src/helpers/errors';
+import logger from 'src/helpers/logger';
 
 const router = new Router();
 
@@ -26,6 +29,9 @@ router.post('/order', async ctx => {
   if (!validType(refreshmentType)) {
     throw new NotFoundError(ErrorCause.UnknownId, `Unknown refreshment type id ${refreshmentType}`);
   }
+  if (!Number.isInteger(quantity) || quantity < 1) {
+    throw new BadRequestError(ErrorCause.InvalidQuantity, `Invalid quantity ${quantity}`);
+  }
 
   const available = stocks.get(refreshmentType);
   if (available < quantity) {
@@ -34,6 +40,12 @@ router.post('/order', async ctx => {
 
   stocks.set(refreshmentType, available - quantity);
   ctx.body = { refreshmentType, quantity };
+
+  const notificationsSubscription = subscriptions.get(ctx.request.ip);
+  if (notificationsSubscription) {
+    logger.info('Found subscription for push notifications. Scheduling the notification.');
+    setTimeout(() => webPush.sendNotification(notificationsSubscription, 'Your order is ready!'), 10000);
+  }
 });
 
 router.get('/replenish', async ctx => {

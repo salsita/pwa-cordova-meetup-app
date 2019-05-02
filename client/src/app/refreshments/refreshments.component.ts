@@ -6,7 +6,13 @@ import { map, take } from 'rxjs/operators';
 import { ErrorCause } from '@models';
 
 import { StoreService } from 'src/app/store.service';
-import { GetTypes, GetQuantity, selectors, PutOrder, Clear } from 'src/app/ducks/refreshments';
+import { GetTypes, GetQuantity, selectors, PutOrder, Clear, ToggleNotifications } from 'src/app/ducks/refreshments';
+
+declare global {
+  interface Window {
+    swRegistration: ServiceWorkerRegistration;
+  }
+}
 
 interface RefreshmentTypeSanitized {
   id: number;
@@ -32,6 +38,10 @@ export class RefreshmentsComponent implements OnInit, OnDestroy {
   puttingOrder: Observable<boolean>;
   delivering: Observable<boolean>;
   orderError: Observable<ErrorCause>;
+
+  showNotificationsControl: Observable<boolean>;
+  notificationsAllowed: Observable<boolean>;
+  togglingNotifications: Observable<boolean>;
 
   desiredQuantity: number;
 
@@ -63,6 +73,10 @@ export class RefreshmentsComponent implements OnInit, OnDestroy {
     this.puttingOrder = this.storeService.select(selectors.isPuttingOrder);
     this.delivering = this.storeService.select(selectors.isDelivering);
     this.orderError = this.storeService.select(selectors.selectOrderError);
+
+    this.showNotificationsControl = this.storeService.select(selectors.isNotificationsControlVisible);
+    this.notificationsAllowed = this.storeService.select(selectors.areNotificationsAllowed);
+    this.togglingNotifications = this.storeService.select(selectors.isTogglingNotifications);
   }
 
   ngOnDestroy() {
@@ -80,5 +94,9 @@ export class RefreshmentsComponent implements OnInit, OnDestroy {
 
   onClear() {
     this.storeService.dispatch(new Clear());
+  }
+
+  onToggleNotifications() {
+    this.storeService.dispatch(new ToggleNotifications());
   }
 }
