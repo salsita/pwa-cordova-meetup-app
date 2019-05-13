@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  build:
+    macos:
+      xcode: "10.1.0"
+    working_directory: /Users/distiller/app
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/artifacts
+
+    steps:
+      - checkout
+
+      - run:
+          name: brew
+          command: brew update && brew install gnu-sed jq curl
+
+      - run:
+          name: Export iOS certificates
+          command: ./scripts/export-ios-certs.sh
+
+      - run:
+          name: Set versions
+          command: ./scripts/set-versions.sh
+
+      - run:
+          name: NPM
+          command: |
+            rm -rf ~/.nvm /opt/circleci/.nvm
+            curl node.salsita.co | sudo bash
+            sudo node_installer 10.15.3
+            which node ; which npm ; node --version ; npm --version
+            sudo npm install -g cordova
+            npm ci
+            mkdir -p cordova/www
+            cp -r client/dist/normal/* cordova/www/
+            cd cordova
+            npm ci
+
+      - restore_cache:
+          key: android-sdk-tools-{{ checksum "scripts/build-android.sh" }}
+
+      - run:
+          name: Build android
+          command: |
+            scripts/build-android.sh
+
+      - save_cache:
+          key: android-sdk-tools-{{ checksum "scripts/build-android.sh" }}
+          paths:
+              - ~/.android
+              - ~/.gradle
+            
+
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - build
