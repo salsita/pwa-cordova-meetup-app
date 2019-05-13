@@ -24,4 +24,4 @@ else
 fi
 
 cd /Users/distiller/app/cordova
-cordova build android --release --buildConfig build-android.json -- --versionCode="$CCI_BUILD_NUM"
+cordova build android --release --buildConfig build-android.json -- --versionCode="$CIRCLE_BUILD_NUM"

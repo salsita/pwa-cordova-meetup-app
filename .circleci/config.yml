@@ -28,11 +28,10 @@ jobs:
             rm -rf ~/.nvm /opt/circleci/.nvm
             curl node.salsita.co | sudo bash
             sudo node_installer 10.15.3
-            which node ; which npm ; node --version ; npm --version
-            sudo npm install -g cordova
             npm ci
             mkdir -p cordova/www
             cp -r client/dist/normal/* cordova/www/
+            sudo npm install -g cordova
 
       - restore_cache:
           key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}

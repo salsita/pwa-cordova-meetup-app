@@ -18,5 +18,3 @@ fi
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" cordova/platforms/ios/SalsitaMeetupApp/SalsitaMeetupApp-Info.plist
 
 gsed -i "s|version=\"[0-9]+\.[0-9]+\.[0-9]+\"|version=\"$VERSION\"|" cordova/config.xml
-
-cat cordova/config.xml
