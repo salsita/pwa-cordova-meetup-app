@@ -37,7 +37,7 @@ jobs:
             npm ci
 
       - restore_cache:
-          key: android-sdk-tools-{{ checksum "scripts/build-android.sh" }}
+          key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
 
       - run:
           name: Build android
@@ -45,7 +45,7 @@ jobs:
             scripts/build-android.sh
 
       - save_cache:
-          key: android-sdk-tools-{{ checksum "scripts/build-android.sh" }}
+          key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
           paths:
               - ~/.android
               - ~/.gradle

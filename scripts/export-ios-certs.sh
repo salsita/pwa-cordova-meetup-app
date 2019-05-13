@@ -3,7 +3,7 @@
 set -euo pipefail
 
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-uuid=`grep UUID -A1 -a pwa_salsita.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
+uuid=`grep UUID -A1 -a certs/salsita.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
 cp certs/salsita.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
 
 security create-keychain -p 'circleci' circleci.keychain

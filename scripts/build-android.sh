@@ -4,9 +4,8 @@ set -euo pipefail
 
 export PATH="$HOME/.android/tools:$HOME/.android/platform-tools:$PATH"
 export ANDROID_HOME="$HOME/.android"
-export CURRENT="sdk-tools-darwin-4333796.zip"
-export PLATFORM="platforms;android-28"
-export BUILD_TOOLS="build-tools;28.0.3"
+
+. ./android-tools-versions.env
 
 if [[ -d ~/.android ]] && [[ -d ~/.gradle ]] ; then
   echo "Android SDK restored from cache"
