@@ -33,8 +33,6 @@ jobs:
             npm ci
             mkdir -p cordova/www
             cp -r client/dist/normal/* cordova/www/
-            cd cordova
-            npm ci
 
       - restore_cache:
           key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
