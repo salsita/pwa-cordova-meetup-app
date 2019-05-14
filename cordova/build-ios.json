@@ -4,7 +4,7 @@
             "codeSignIdentity": "iPhone Distribution",
             "provisioningProfile": "3304c113-dc73-453d-9927-75de3c016448",
             "developmentTeam": "KZNK82MF62",
-            "packageType": "app-store"
+            "packageType": "ad-hoc"
         }
     }
 }
