@@ -17,4 +17,4 @@ fi
 /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $CIRCLE_BUILD_NUM" cordova/platforms/ios/SalsitaMeetupApp/SalsitaMeetupApp-Info.plist
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" cordova/platforms/ios/SalsitaMeetupApp/SalsitaMeetupApp-Info.plist
 
-gsed -i "s|version=\"[0-9]+\.[0-9]+\.[0-9]+\"|version=\"$VERSION\"|" cordova/config.xml
+gsed -Ei "s|version=\"[0-9]+\.[0-9]+\.[0-9]+\"|version=\"$VERSION\"|" cordova/config.xml

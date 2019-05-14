@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-export PATH="$HOME/.android/tools:$HOME/.android/platform-tools:$PATH"
+export PATH="$HOME/.android/tools:$HOME/.android/platform-tools:$HOME/.gradle/gradle/bin:$PATH"
 export ANDROID_HOME="$HOME/.android"
 
 cd /Users/distiller/app/cordova
