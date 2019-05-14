@@ -29,10 +29,10 @@ jobs:
             curl node.salsita.co | sudo bash
             sudo node_installer 10.15.3
             npm ci >/dev/null
-            cd cordova
-            npm ci
             mkdir -p cordova/www
             cp -r client/dist/normal/* cordova/www/
+            cd cordova
+            npm ci
             cd /tmp ; sudo npm install -g cordova ; which cordova ; echo $PATH
 
       - restore_cache:
