@@ -52,6 +52,9 @@ jobs:
           name: Build android
           command: scripts/build-android.sh
 
+      - run:
+          name: Build iOS
+          command: scripts/build-ios.sh
 
 workflows:
   version: 2
