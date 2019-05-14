@@ -46,7 +46,6 @@ jobs:
           key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
           paths:
               - ~/.android
-              - ~/.gradle
 
       - run:
           name: Build android

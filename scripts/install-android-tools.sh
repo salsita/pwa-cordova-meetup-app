@@ -2,11 +2,9 @@
 
 set -euo pipefail
 
-if [[ -d ~/.android ]] && [[ -d ~/.gradle ]] ; then
+if [[ -d ~/.android ]] ; then
   echo "Android SDK restored from cache"
   exit 0
-  else
-  ls -la ~/
 fi
 
 . ./android-tools-versions.env
