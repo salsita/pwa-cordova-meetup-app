@@ -1,4 +1,7 @@
 #!/bin/bash
 
 cd cordova
-cordova build ios --release --buildConfig build-ios.json
+cordova build ios \
+  --release \
+  --device \
+  --buildConfig build-ios.json

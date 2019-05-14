@@ -6,4 +6,8 @@ export PATH="$HOME/.android/tools:$HOME/.android/platform-tools:$HOME/.gradle/gr
 export ANDROID_HOME="$HOME/.android"
 
 cd cordova
-cordova build android --release --buildConfig build-android.json -- --versionCode="$CIRCLE_BUILD_NUM"
+cordova build android \
+  --release \
+  --device \
+  --buildConfig build-android.json -- \
+  --versionCode="$CIRCLE_BUILD_NUM"
