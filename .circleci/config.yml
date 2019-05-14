@@ -39,16 +39,19 @@ jobs:
           key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
 
       - run:
-          name: Build android
-          command: |
-            scripts/build-android.sh
+          name: Install android tools
+          command: scripts/install-android-tools.sh
 
       - save_cache:
           key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
           paths:
               - ~/.android
               - ~/.gradle
-            
+
+      - run:
+          name: Build android
+          command: scripts/build-android.sh
+
 
 workflows:
   version: 2
