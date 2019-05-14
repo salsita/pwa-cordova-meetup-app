@@ -56,6 +56,15 @@ jobs:
           name: Build iOS
           command: scripts/build-ios.sh
 
+      - run:
+          name: Artifacts
+          command: |
+            mkdir /tmp/art
+            cp -r /Users/distiller/app/cordova/platforms/android/app/build/outputs/apk/release/app-release.apk /tmp/art/
+
+      - store_artifacts:
+          path: /tmp/art
+
 workflows:
   version: 2
   build-workflow:
