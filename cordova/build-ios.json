@@ -2,7 +2,7 @@
     "ios": {
         "release": {
             "codeSignIdentity": "iPhone Distribution",
-            "provisioningProfile": "b5d51b2e-fde5-4c6b-9608-a801c03914ee",
+            "provisioningProfile": "3304c113-dc73-453d-9927-75de3c016448",
             "developmentTeam": "KZNK82MF62",
             "packageType": "app-store"
         }
