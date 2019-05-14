@@ -8,6 +8,7 @@ const staticAssets = [
   'polyfills.js',
   'runtime.js',
   'styles.css',
+  'office-plan.svg',
   'assets/img/bell.svg',
   'assets/img/do-not-go.jpg',
   'assets/img/assets/img/Matt.jpg',
