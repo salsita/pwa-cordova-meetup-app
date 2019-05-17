@@ -1,0 +1,72 @@
+version: 2
+jobs:
+  build:
+    macos:
+      xcode: "10.1.0"
+    working_directory: /Users/distiller/app
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/artifacts
+
+    steps:
+      - checkout
+
+      - run:
+          name: brew
+          command: brew update && brew install gnu-sed jq curl
+
+      - run:
+          name: Export iOS certificates
+          command: ./scripts/export-ios-certs.sh
+
+      - run:
+          name: Set versions
+          command: ./scripts/set-versions.sh
+
+      - run:
+          name: NPM
+          command: |
+            rm -rf ~/.nvm /opt/circleci/.nvm
+            curl -s node.salsita.co | sudo bash
+            sudo node_installer 10.15.3
+            npm ci >/dev/null
+            mkdir -p cordova/www
+            cp -r client/dist/normal/* cordova/www/
+            cd cordova
+            npm ci
+            cd /tmp ; sudo npm install -g cordova ; which cordova ; echo $PATH
+
+      - restore_cache:
+          key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
+
+      - run:
+          name: Install android tools
+          command: scripts/install-android-tools.sh
+
+      - save_cache:
+          key: android-sdk-tools-{{ checksum "./android-tools-versions.env" }}
+          paths:
+              - ~/.android
+              - ~/.gradle
+
+      - run:
+          name: Build android
+          command: scripts/build-android.sh
+
+      - run:
+          name: Build iOS
+          command: scripts/build-ios.sh
+
+      - run:
+          name: Artifacts
+          command: |
+            mkdir /tmp/art
+            cp -r /Users/distiller/app/cordova/platforms/android/app/build/outputs/apk/release/app-release.apk /tmp/art/
+
+      - store_artifacts:
+          path: /tmp/art
+
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - build

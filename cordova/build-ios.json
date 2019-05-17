@@ -1,0 +1,10 @@
+{
+    "ios": {
+        "release": {
+            "codeSignIdentity": "iPhone Distribution",
+            "provisioningProfile": "00000000-aaaa-bbbb-cccc-111111111111",
+            "developmentTeam": "ABCDE12345",
+            "packageType": "enterprise"
+        }
+    }
+}

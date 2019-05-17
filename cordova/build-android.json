@@ -1,0 +1,11 @@
+{
+    "android": {
+        "release": {
+            "keystore": "../certs/salsita.keystore",
+            "storePassword": "salsita",
+            "alias": "salsita",
+            "password" : "salsita",
+            "keystoreType": ""
+        }
+    }
+}
